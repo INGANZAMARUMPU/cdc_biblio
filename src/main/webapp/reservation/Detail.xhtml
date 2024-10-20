@@ -1,0 +1,93 @@
+<f:view>
+    <html>
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <title>Reservation Detail</title>
+            <link rel="stylesheet" type="text/css" href="/cdc-biblio/style.css" />
+        </head>
+        <body>
+            <ui:include src="/menu.xhtml" />
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <div class="parent">
+                <h1>Details de la Reservation</h1>
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <h:outputText value="Date:"/>
+                        <h:outputText value="#{reservation.reservation.date}" title="Date" >
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:outputText>
+                        <h:outputText value="EmprunteurId:"/>
+                        <h:panelGroup>
+                            <h:outputText value="#{reservation.reservation.emprunteurId}"/>
+                            <h:panelGroup rendered="#{reservation.reservation.emprunteurId != null}">
+                                <h:outputText value=" ("/>
+                                <h:commandLink value="Details" action="#{emprunteur.detailSetup}">
+                                    <f:param name="jsfcrud.currentReservation" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][reservation.reservation][reservation.converter].jsfcrud_invoke}"/>
+                                    <f:param name="jsfcrud.currentEmprunteur" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][reservation.reservation.emprunteurId][emprunteur.converter].jsfcrud_invoke}"/>
+                                    <f:param name="jsfcrud.relatedController" value="reservation"/>
+                                    <f:param name="jsfcrud.relatedControllerType" value="com.mediasoft.cdc.biblio.ReservationController"/>
+                                </h:commandLink>
+                                <h:outputText value=" "/>
+                                <h:commandLink value="Modifier" action="#{emprunteur.editSetup}">
+                                    <f:param name="jsfcrud.currentReservation" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][reservation.reservation][reservation.converter].jsfcrud_invoke}"/>
+                                    <f:param name="jsfcrud.currentEmprunteur" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][reservation.reservation.emprunteurId][emprunteur.converter].jsfcrud_invoke}"/>
+                                    <f:param name="jsfcrud.relatedController" value="reservation"/>
+                                    <f:param name="jsfcrud.relatedControllerType" value="com.mediasoft.cdc.biblio.ReservationController"/>
+                                </h:commandLink>
+                                <h:outputText value=" "/>
+                                <h:commandLink value="Supprimer" action="#{emprunteur.destroy}">
+                                    <f:param name="jsfcrud.currentReservation" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][reservation.reservation][reservation.converter].jsfcrud_invoke}"/>
+                                    <f:param name="jsfcrud.currentEmprunteur" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][reservation.reservation.emprunteurId][emprunteur.converter].jsfcrud_invoke}"/>
+                                    <f:param name="jsfcrud.relatedController" value="reservation"/>
+                                    <f:param name="jsfcrud.relatedControllerType" value="com.mediasoft.cdc.biblio.ReservationController"/>
+                                </h:commandLink>
+                                <h:outputText value=" )"/>
+                            </h:panelGroup>
+                        </h:panelGroup>
+                        <h:outputText value="ExemplaireId:"/>
+                        <h:panelGroup>
+                            <h:outputText value="#{reservation.reservation.exemplaireId}"/>
+                            <h:panelGroup rendered="#{reservation.reservation.exemplaireId != null}">
+                                <h:outputText value=" ("/>
+                                <h:commandLink value="Details" action="#{exemplaire.detailSetup}">
+                                    <f:param name="jsfcrud.currentReservation" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][reservation.reservation][reservation.converter].jsfcrud_invoke}"/>
+                                    <f:param name="jsfcrud.currentExemplaire" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][reservation.reservation.exemplaireId][exemplaire.converter].jsfcrud_invoke}"/>
+                                    <f:param name="jsfcrud.relatedController" value="reservation"/>
+                                    <f:param name="jsfcrud.relatedControllerType" value="com.mediasoft.cdc.biblio.ReservationController"/>
+                                </h:commandLink>
+                                <h:outputText value=" "/>
+                                <h:commandLink value="Modifier" action="#{exemplaire.editSetup}">
+                                    <f:param name="jsfcrud.currentReservation" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][reservation.reservation][reservation.converter].jsfcrud_invoke}"/>
+                                    <f:param name="jsfcrud.currentExemplaire" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][reservation.reservation.exemplaireId][exemplaire.converter].jsfcrud_invoke}"/>
+                                    <f:param name="jsfcrud.relatedController" value="reservation"/>
+                                    <f:param name="jsfcrud.relatedControllerType" value="com.mediasoft.cdc.biblio.ReservationController"/>
+                                </h:commandLink>
+                                <h:outputText value=" "/>
+                                <h:commandLink value="Supprimer" action="#{exemplaire.destroy}">
+                                    <f:param name="jsfcrud.currentReservation" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][reservation.reservation][reservation.converter].jsfcrud_invoke}"/>
+                                    <f:param name="jsfcrud.currentExemplaire" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][reservation.reservation.exemplaireId][exemplaire.converter].jsfcrud_invoke}"/>
+                                    <f:param name="jsfcrud.relatedController" value="reservation"/>
+                                    <f:param name="jsfcrud.relatedControllerType" value="com.mediasoft.cdc.biblio.ReservationController"/>
+                                </h:commandLink>
+                                <h:outputText value=" )"/>
+                            </h:panelGroup>
+                        </h:panelGroup>
+    
+    
+                    </h:panelGrid>
+                    <h:commandLink action="#{reservation.destroy}" value="Supprimer">
+                        <f:param name="jsfcrud.currentReservation" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][reservation.reservation][reservation.converter].jsfcrud_invoke}" />
+                    </h:commandLink>
+                    <h:commandLink action="#{reservation.editSetup}" value="Modifier">
+                        <f:param name="jsfcrud.currentReservation" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][reservation.reservation][reservation.converter].jsfcrud_invoke}" />
+                    </h:commandLink>
+                    <h:commandLink action="#{reservation.createSetup}" value="Reserver" />
+                    <h:commandLink action="#{reservation.listSetup}"  value="Voir tout les Reservations"/>
+                </h:form>
+            </div>
+        </body>
+    </html>
+</f:view>
+</html>

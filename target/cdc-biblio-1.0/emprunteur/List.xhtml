@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+<f:view>
+    <html>
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <title>Tout les Emprunteurs</title>
+            <link rel="stylesheet" type="text/css" href="/cdc-biblio/style.css" />
+        </head>
+        <body>
+            <ui:include src="/menu.xhtml" />
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <div class="parent">
+                <h1>Tout les Emprunteurs</h1>
+                <h:form styleClass="jsfcrud_list_form">
+                    <h:outputText escape="false" value="(No Emprunteur Items Found)" rendered="#{emprunteur.pagingInfo.itemCount == 0}" />
+                    <h:panelGroup rendered="#{emprunteur.pagingInfo.itemCount > 0}">
+                        <h:outputText value="Item #{emprunteur.pagingInfo.firstItem + 1}..#{emprunteur.pagingInfo.lastItem} of #{emprunteur.pagingInfo.itemCount}"/>
+                        <h:commandLink action="#{emprunteur.prev}" value="Previous #{emprunteur.pagingInfo.batchSize}" rendered="#{emprunteur.pagingInfo.firstItem >= emprunteur.pagingInfo.batchSize}"/>
+                        <h:commandLink action="#{emprunteur.next}" value="Next #{emprunteur.pagingInfo.batchSize}" rendered="#{emprunteur.hasPrevious()}"/>
+                        <h:commandLink action="#{emprunteur.next}" value="Remaining #{emprunteur.pagingInfo.itemCount - emprunteur.pagingInfo.lastItem}"
+                                       rendered="#{emprunteur.hasNext()}"/>
+                        <h:dataTable value="#{emprunteur.emprunteurItems}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Nom"/>
+                                </f:facet>
+                                <h:outputText value="#{item.nom}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Prenom"/>
+                                </f:facet>
+                                <h:outputText value="#{item.prenom}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Addresse"/>
+                                </f:facet>
+                                <h:outputText value="#{item.addresse}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Telephone"/>
+                                </f:facet>
+                                <h:outputText value="#{item.telephone}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Email"/>
+                                </f:facet>
+                                <h:outputText value="#{item.email}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText escape="false" value=""/>
+                                </f:facet>
+                                <h:commandLink value="Details" action="#{emprunteur.detailSetup}">
+                                    <f:param name="jsfcrud.currentEmprunteur" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][item][emprunteur.converter].jsfcrud_invoke}"/>
+                                </h:commandLink>
+                                <h:outputText value=" "/>
+                                <h:commandLink value="Modifier" action="#{emprunteur.editSetup}">
+                                    <f:param name="jsfcrud.currentEmprunteur" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][item][emprunteur.converter].jsfcrud_invoke}"/>
+                                </h:commandLink>
+                                <h:outputText value=" "/>
+                                <h:commandLink value="Supprimer" action="#{emprunteur.destroy}">
+                                    <f:param name="jsfcrud.currentEmprunteur" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][item][emprunteur.converter].jsfcrud_invoke}"/>
+                                </h:commandLink>
+                            </h:column>
+    
+                        </h:dataTable>
+                    </h:panelGroup>
+                    <h:commandLink action="#{emprunteur.createSetup}" value="Ajouter un adherent"/>
+                </h:form>
+            </div>
+        </body>
+    </html>
+</f:view>
+</html>

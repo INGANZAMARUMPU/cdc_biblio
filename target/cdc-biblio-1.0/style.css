@@ -1,0 +1,74 @@
+root { 
+    display: block;
+}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #3a4f54;
+    background-color: #dfecf1;
+    margin: 0;
+    padding: 0;
+}
+table{
+    width: 100%;
+}
+#main-menu{
+    background-color: cadetblue;
+    align-items: center;
+}
+#main-menu > *, .parent{
+    max-width: 1400px;
+    margin: auto;
+}
+#main-menu .title{
+    padding: 10px 0 0 20px;
+    font-size: 2em;
+}
+#main-menu .menu{
+    display: flex;
+}
+#main-menu a{
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    display: inline-block;
+    font-size: 1.2em;
+}
+#main-menu a:hover{
+    background-color: #3a4f54;
+}
+form.jsfcrud_list_form th, td th {
+    color: #4e6a71;
+    border-style: solid;
+    border-width: 1px;
+    border-color: cadetblue;
+    text-align: left;
+    background-color: #b2d5d6;
+}
+td, th{
+    vertical-align: top;
+    padding: 6px;
+}
+
+form.jsfcrud_list_form td, td td {
+    border-style: solid;
+    border-width: 1px;
+    border-color: #b2d5d6;
+    vertical-align: baseline;
+}
+
+tr.jsfcrud_odd_row {
+    background-color: #fefeff;
+    color: #4e6a71;
+}
+
+
+tr.jsfcrud_even_row {
+    background-color: #eff5fa;
+    color: #4e6a71;
+}
+
+#busyImage {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+}

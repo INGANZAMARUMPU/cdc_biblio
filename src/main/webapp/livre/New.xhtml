@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+<f:view>
+    <html>
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <title>New Livre</title>
+            <link rel="stylesheet" type="text/css" href="/cdc-biblio/style.css" />
+        </head>
+        <body>
+            <ui:include src="/menu.xhtml" />
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <div class="parent">
+                <h1>New Livre</h1>
+                <h:form>
+                    <h:inputHidden id="validateCreateField" validator="#{livre.validateCreate}" value="value"/>
+                    <h:panelGrid columns="2">
+                        <h:outputText value="Isbn:"/>
+                        <h:inputText id="isbn" value="#{livre.livre.isbn}" title="Isbn" required="true" requiredMessage="The isbn field is required." />
+                        <h:outputText value="Titre:"/>
+                        <h:inputText id="titre" value="#{livre.livre.titre}" title="Titre" />
+                        <h:outputText value="Auteur:"/>
+                        <h:inputText id="auteur" value="#{livre.livre.auteur}" title="Auteur" />
+                        <h:outputText value="FonctionAuteur:"/>
+                        <h:inputText id="fonctionAuteur" value="#{livre.livre.fonctionAuteur}" title="FonctionAuteur" />
+                        <h:outputText value="Editeur:"/>
+                        <h:inputText id="editeur" value="#{livre.livre.editeur}" title="Editeur" />
+                        <h:outputText value="AnneEdition:"/>
+                        <h:inputText id="anneEdition" value="#{livre.livre.anneEdition}" title="AnneEdition" />
+                        <h:outputText value="Resume:"/>
+                        <h:inputText id="resume" value="#{livre.livre.resume}" title="Resume" />
+                        <h:outputText value="EmpruntCollection:"/>
+                        <h:selectManyListbox id="empruntCollection" value="#{livre.livre.jsfcrud_transform[jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method.collectionToArray][jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method.arrayToList].empruntCollection}" title="EmpruntCollection" size="6" converter="#{emprunt.converter}" >
+                            <f:selectItems value="#{emprunt.empruntItemsAvailableSelectMany}"/>
+                        </h:selectManyListbox>
+                        <h:outputText value="ExemplaireCollection:"/>
+                        <h:selectManyListbox id="exemplaireCollection" value="#{livre.livre.jsfcrud_transform[jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method.collectionToArray][jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method.arrayToList].exemplaireCollection}" title="ExemplaireCollection" size="6" converter="#{exemplaire.converter}" >
+                            <f:selectItems value="#{exemplaire.exemplaireItemsAvailableSelectMany}"/>
+                        </h:selectManyListbox>
+    
+                    </h:panelGrid>
+                    <h:commandLink action="#{livre.create}" value="Ajouter"/>
+                    <h:commandLink action="#{livre.listSetup}"  value="Voir tout les Livres" immediate="true"/>
+                </h:form>
+            </div>
+        </body>
+    </html>
+</f:view>
+</html>

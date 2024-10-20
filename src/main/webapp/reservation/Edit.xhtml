@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+<f:view>
+    <html>
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <title>Editing Reservation</title>
+            <link rel="stylesheet" type="text/css" href="/cdc-biblio/style.css" />
+        </head>
+        <body>
+            <ui:include src="/menu.xhtml" />
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <div class="parent">
+                <h1>Modification d'une reservation</h1>
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <h:outputText value="Date (MM/dd/yyyy):"/>
+                        <h:inputText id="date" value="#{reservation.reservation.date}" title="Date" >
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:inputText>
+                        <h:outputText value="EmprunteurId:"/>
+                        <h:selectOneMenu id="emprunteurId" value="#{reservation.reservation.emprunteurId}" title="EmprunteurId" >
+                            <f:selectItems value="#{emprunteur.emprunteurItemsAvailableSelectOne}"/>
+                        </h:selectOneMenu>
+                        <h:outputText value="ExemplaireId:"/>
+                        <h:selectOneMenu id="exemplaireId" value="#{reservation.reservation.exemplaireId}" title="ExemplaireId" >
+                            <f:selectItems value="#{exemplaire.exemplaireItemsAvailableSelectOne}"/>
+                        </h:selectOneMenu>
+    
+                    </h:panelGrid>
+                    <h:commandLink action="#{reservation.edit}" value="Enregister">
+                        <f:param name="jsfcrud.currentReservation" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][reservation.reservation][reservation.converter].jsfcrud_invoke}"/>
+                    </h:commandLink>
+                    <h:commandLink action="#{reservation.detailSetup}" value="Details" immediate="true">
+                        <f:param name="jsfcrud.currentReservation" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][reservation.reservation][reservation.converter].jsfcrud_invoke}"/>
+                    </h:commandLink>
+                    <h:commandLink action="#{reservation.listSetup}"  value="Voir tout les Reservations" immediate="true"/>
+                </h:form>
+            </div>
+        </body>
+    </html>
+</f:view>
+</html>

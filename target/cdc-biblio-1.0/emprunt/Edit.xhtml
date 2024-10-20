@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+<f:view>
+    <html>
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <title>Editing Emprunt</title>
+            <link rel="stylesheet" type="text/css" href="/cdc-biblio/style.css" />
+        </head>
+        <body>
+            <ui:include src="/menu.xhtml" />
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <div class="parent">
+                <h1>Modification de l'emprunt</h1>
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <h:outputText value="DateEmprunt (MM/dd/yyyy):"/>
+                        <h:inputText id="dateEmprunt" value="#{emprunt.emprunt.dateEmprunt}" title="DateEmprunt" >
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:inputText>
+                        <h:outputText value="DateRemise (MM/dd/yyyy):"/>
+                        <h:inputText id="dateRemise" value="#{emprunt.emprunt.dateRemise}" title="DateRemise" >
+                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                        </h:inputText>
+                        <h:outputText value="EmprunteurId:"/>
+                        <h:selectOneMenu id="emprunteurId" value="#{emprunt.emprunt.emprunteurId}" title="EmprunteurId" >
+                            <f:selectItems value="#{emprunteur.emprunteurItemsAvailableSelectOne}"/>
+                        </h:selectOneMenu>
+                        <h:outputText value="LivreId:"/>
+                        <h:selectOneMenu id="livreId" value="#{emprunt.emprunt.livreId}" title="LivreId" >
+                            <f:selectItems value="#{livre.livreItemsAvailableSelectOne}"/>
+                        </h:selectOneMenu>
+    
+                    </h:panelGrid>
+                    <h:commandLink action="#{emprunt.edit}" value="Enregister">
+                        <f:param name="jsfcrud.currentEmprunt" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][emprunt.emprunt][emprunt.converter].jsfcrud_invoke}"/>
+                    </h:commandLink>
+                    <h:commandLink action="#{emprunt.detailSetup}" value="Details" immediate="true">
+                        <f:param name="jsfcrud.currentEmprunt" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][emprunt.emprunt][emprunt.converter].jsfcrud_invoke}"/>
+                    </h:commandLink>
+                    <h:commandLink action="#{emprunt.listSetup}"  value="Voir tout les Emprunts" immediate="true"/>
+                </h:form>
+            </div>
+        </body>
+    </html>
+</f:view>
+</html>

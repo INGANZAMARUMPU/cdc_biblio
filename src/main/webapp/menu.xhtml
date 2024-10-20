@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+<f:view>
+    <div id="main-menu">
+        <div class="title">
+            CDC BIBLIO V. 1.0
+        </div>
+        <div class="menu">
+            <h:form>
+                <h:commandLink action="#{biblioteque.listSetup}" value="Biblioteques"/>
+            </h:form>
+            <h:form>
+                <h:commandLink action="#{livre.listSetup}" value="Livres"/>
+            </h:form>
+            <h:form>
+                <h:commandLink action="#{exemplaire.listSetup}" value="Exemplaires"/>
+            </h:form>
+            <h:form>
+                <h:commandLink action="#{emprunteur.listSetup}" value="Emprunteurs"/>
+            </h:form>
+            <h:form>
+                <h:commandLink action="#{emprunt.listSetup}" value="Emprunts"/>
+            </h:form>
+            <h:form>
+                <h:commandLink action="#{reservation.listSetup}" value="Reservations"/>
+            </h:form>
+        </div>
+    </div>
+</f:view>
+</html>

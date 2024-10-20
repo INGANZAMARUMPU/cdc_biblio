@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+<f:view>
+    <html>
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <title>Editing Exemplaire</title>
+            <link rel="stylesheet" type="text/css" href="/cdc-biblio/style.css" />
+        </head>
+        <body>
+            <ui:include src="/menu.xhtml" />
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <div class="parent">
+                <h1>Modification d'un exemplaire</h1>
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <h:outputText value="Situation:"/>
+                        <h:inputText id="situation" value="#{exemplaire.exemplaire.situation}" title="Situation" />
+                        <h:outputText value="ReservationCollection:"/>
+                        <h:selectManyListbox id="reservationCollection" value="#{exemplaire.exemplaire.jsfcrud_transform[jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method.collectionToArray][jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method.arrayToList].reservationCollection}" title="ReservationCollection" size="6" converter="#{reservation.converter}" >
+                            <f:selectItems value="#{reservation.reservationItemsAvailableSelectMany}"/>
+                        </h:selectManyListbox>
+                        <h:outputText value="BibliotequeId:"/>
+                        <h:selectOneMenu id="bibliotequeId" value="#{exemplaire.exemplaire.bibliotequeId}" title="BibliotequeId" >
+                            <f:selectItems value="#{biblioteque.bibliotequeItemsAvailableSelectOne}"/>
+                        </h:selectOneMenu>
+                        <h:outputText value="LivreId:"/>
+                        <h:selectOneMenu id="livreId" value="#{exemplaire.exemplaire.livreId}" title="LivreId" >
+                            <f:selectItems value="#{livre.livreItemsAvailableSelectOne}"/>
+                        </h:selectOneMenu>
+    
+                    </h:panelGrid>
+                    <br />
+                    <h:commandLink action="#{exemplaire.edit}" value="Enregister">
+                        <f:param name="jsfcrud.currentExemplaire" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][exemplaire.exemplaire][exemplaire.converter].jsfcrud_invoke}"/>
+                    </h:commandLink>
+                    <br />
+                    <br />
+                    <h:commandLink action="#{exemplaire.detailSetup}" value="Details" immediate="true">
+                        <f:param name="jsfcrud.currentExemplaire" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][exemplaire.exemplaire][exemplaire.converter].jsfcrud_invoke}"/>
+                    </h:commandLink>
+                    <br />
+                    <h:commandLink action="#{exemplaire.listSetup}"  value="Voir tout les Exemplaires" immediate="true"/>
+                    <br />
+                    <br />
+                    
+                </h:form>
+            </div>
+        </body>
+    </html>
+</f:view>
+</html>

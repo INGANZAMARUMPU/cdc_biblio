@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="jakarta.faces.facelets">
+<f:view>
+    <html>
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <title>Tout les Emprunts</title>
+            <link rel="stylesheet" type="text/css" href="/cdc-biblio/style.css" />
+        </head>
+        <body>
+            <ui:include src="/menu.xhtml" />
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <div class="parent">
+                <h1>Tout les Emprunts</h1>
+                <h:form styleClass="jsfcrud_list_form">
+                    <h:outputText escape="false" value="(No Emprunt Items Found)" rendered="#{emprunt.pagingInfo.itemCount == 0}" />
+                    <h:panelGroup rendered="#{emprunt.pagingInfo.itemCount > 0}">
+                        <h:outputText value="Item #{emprunt.pagingInfo.firstItem + 1}..#{emprunt.pagingInfo.lastItem} of #{emprunt.pagingInfo.itemCount}"/>
+                        <h:commandLink action="#{emprunt.prev}" value="Previous #{emprunt.pagingInfo.batchSize}" rendered="#{emprunt.pagingInfo.firstItem >= emprunt.pagingInfo.batchSize}"/>
+                        <h:commandLink action="#{emprunt.next}" value="Next #{emprunt.pagingInfo.batchSize}" rendered="#{emprunt.hasPrevious()}"/>
+                        <h:commandLink action="#{emprunt.next}" value="Remaining #{emprunt.pagingInfo.itemCount - emprunt.pagingInfo.lastItem}"
+                                       rendered="#{emprunt.hasNext()}"/>
+                        <h:dataTable value="#{emprunt.empruntItems}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="DateEmprunt"/>
+                                </f:facet>
+                                <h:outputText value="#{item.dateEmprunt}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="DateRemise"/>
+                                </f:facet>
+                                <h:outputText value="#{item.dateRemise}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="EmprunteurId"/>
+                                </f:facet>
+                                <h:outputText value="#{item.emprunteurId}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="LivreId"/>
+                                </f:facet>
+                                <h:outputText value="#{item.livreId}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText escape="false" value=""/>
+                                </f:facet>
+                                <h:commandLink value="Details" action="#{emprunt.detailSetup}">
+                                    <f:param name="jsfcrud.currentEmprunt" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][item][emprunt.converter].jsfcrud_invoke}"/>
+                                </h:commandLink>
+                                <h:outputText value=" "/>
+                                <h:commandLink value="Modifier" action="#{emprunt.editSetup}">
+                                    <f:param name="jsfcrud.currentEmprunt" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][item][emprunt.converter].jsfcrud_invoke}"/>
+                                </h:commandLink>
+                                <h:outputText value=" "/>
+                                <h:commandLink value="Supprimer" action="#{emprunt.destroy}">
+                                    <f:param name="jsfcrud.currentEmprunt" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][item][emprunt.converter].jsfcrud_invoke}"/>
+                                </h:commandLink>
+                            </h:column>
+    
+                        </h:dataTable>
+                    </h:panelGroup>
+                    <h:commandLink action="#{emprunt.createSetup}" value="Emprunter"/>
+                </h:form>
+            </div>
+        </body>
+    </html>
+</f:view>
+</html>

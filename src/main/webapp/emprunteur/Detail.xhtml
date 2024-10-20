@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="jakarta.faces.facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+<f:view>
+    <html>
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+            <title>Emprunteur Detail</title>
+            <link rel="stylesheet" type="text/css" href="/cdc-biblio/style.css" />
+        </head>
+        <body>
+            <ui:include src="/menu.xhtml" />
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <div class="parent">
+                <h1>Emprunteur Detail</h1>
+                <h:form>
+                    <h:panelGrid columns="2">
+                        <h:outputText value="Nom:"/>
+                        <h:outputText value="#{emprunteur.emprunteur.nom}" title="Nom" />
+                        <h:outputText value="Prenom:"/>
+                        <h:outputText value="#{emprunteur.emprunteur.prenom}" title="Prenom" />
+                        <h:outputText value="Addresse:"/>
+                        <h:outputText value="#{emprunteur.emprunteur.addresse}" title="Addresse" />
+                        <h:outputText value="Telephone:"/>
+                        <h:outputText value="#{emprunteur.emprunteur.telephone}" title="Telephone" />
+                        <h:outputText value="Email:"/>
+                        <h:outputText value="#{emprunteur.emprunteur.email}" title="Email" />
+    
+                        <h:outputText value="EmpruntCollection:" />
+                        <h:panelGroup>
+                            <h:outputText rendered="#{empty emprunteur.emprunteur.empruntCollection}" value="(No Items)"/>
+                            <h:dataTable value="#{emprunteur.emprunteur.empruntCollection}" var="item" 
+                                         border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px" 
+                                         rendered="#{not empty emprunteur.emprunteur.empruntCollection}">
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Id"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.id}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="DateEmprunt"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.dateEmprunt}">
+                                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                                    </h:outputText>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="DateRemise"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.dateRemise}">
+                                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                                    </h:outputText>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="EmprunteurId"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.emprunteurId}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="LivreId"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.livreId}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText escape="false" value=""/>
+                                    </f:facet>
+                                    <h:commandLink value="Details" action="#{emprunt.detailSetup}">
+                                        <f:param name="jsfcrud.currentEmprunteur" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][emprunteur.emprunteur][emprunteur.converter].jsfcrud_invoke}"/>
+                                        <f:param name="jsfcrud.currentEmprunt" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][item][emprunt.converter].jsfcrud_invoke}"/>
+                                        <f:param name="jsfcrud.relatedController" value="emprunteur" />
+                                        <f:param name="jsfcrud.relatedControllerType" value="com.mediasoft.cdc.biblio.EmprunteurController" />
+                                    </h:commandLink>
+                                    <h:outputText value=" "/>
+                                    <h:commandLink value="Modifier" action="#{emprunt.editSetup}">
+                                        <f:param name="jsfcrud.currentEmprunteur" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][emprunteur.emprunteur][emprunteur.converter].jsfcrud_invoke}"/>
+                                        <f:param name="jsfcrud.currentEmprunt" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][item][emprunt.converter].jsfcrud_invoke}"/>
+                                        <f:param name="jsfcrud.relatedController" value="emprunteur" />
+                                        <f:param name="jsfcrud.relatedControllerType" value="com.mediasoft.cdc.biblio.EmprunteurController" />
+                                    </h:commandLink>
+                                    <h:outputText value=" "/>
+                                    <h:commandLink value="Supprimer" action="#{emprunt.destroy}">
+                                        <f:param name="jsfcrud.currentEmprunteur" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][emprunteur.emprunteur][emprunteur.converter].jsfcrud_invoke}"/>
+                                        <f:param name="jsfcrud.currentEmprunt" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][item][emprunt.converter].jsfcrud_invoke}"/>
+                                        <f:param name="jsfcrud.relatedController" value="emprunteur" />
+                                        <f:param name="jsfcrud.relatedControllerType" value="com.mediasoft.cdc.biblio.EmprunteurController" />
+                                    </h:commandLink>
+                                </h:column>
+                            </h:dataTable>
+                        </h:panelGroup>
+                        <h:outputText value="ReservationCollection:" />
+                        <h:panelGroup>
+                            <h:outputText rendered="#{empty emprunteur.emprunteur.reservationCollection}" value="(No Items)"/>
+                            <h:dataTable value="#{emprunteur.emprunteur.reservationCollection}" var="item" 
+                                         border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px" 
+                                         rendered="#{not empty emprunteur.emprunteur.reservationCollection}">
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Id"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.id}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="Date"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.date}">
+                                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                                    </h:outputText>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="EmprunteurId"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.emprunteurId}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText value="ExemplaireId"/>
+                                    </f:facet>
+                                    <h:outputText value="#{item.exemplaireId}"/>
+                                </h:column>
+                                <h:column>
+                                    <f:facet name="header">
+                                        <h:outputText escape="false" value=""/>
+                                    </f:facet>
+                                    <h:commandLink value="Details" action="#{reservation.detailSetup}">
+                                        <f:param name="jsfcrud.currentEmprunteur" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][emprunteur.emprunteur][emprunteur.converter].jsfcrud_invoke}"/>
+                                        <f:param name="jsfcrud.currentReservation" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][item][reservation.converter].jsfcrud_invoke}"/>
+                                        <f:param name="jsfcrud.relatedController" value="emprunteur" />
+                                        <f:param name="jsfcrud.relatedControllerType" value="com.mediasoft.cdc.biblio.EmprunteurController" />
+                                    </h:commandLink>
+                                    <h:outputText value=" "/>
+                                    <h:commandLink value="Modifier" action="#{reservation.editSetup}">
+                                        <f:param name="jsfcrud.currentEmprunteur" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][emprunteur.emprunteur][emprunteur.converter].jsfcrud_invoke}"/>
+                                        <f:param name="jsfcrud.currentReservation" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][item][reservation.converter].jsfcrud_invoke}"/>
+                                        <f:param name="jsfcrud.relatedController" value="emprunteur" />
+                                        <f:param name="jsfcrud.relatedControllerType" value="com.mediasoft.cdc.biblio.EmprunteurController" />
+                                    </h:commandLink>
+                                    <h:outputText value=" "/>
+                                    <h:commandLink value="Supprimer" action="#{reservation.destroy}">
+                                        <f:param name="jsfcrud.currentEmprunteur" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][emprunteur.emprunteur][emprunteur.converter].jsfcrud_invoke}"/>
+                                        <f:param name="jsfcrud.currentReservation" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][item][reservation.converter].jsfcrud_invoke}"/>
+                                        <f:param name="jsfcrud.relatedController" value="emprunteur" />
+                                        <f:param name="jsfcrud.relatedControllerType" value="com.mediasoft.cdc.biblio.EmprunteurController" />
+                                    </h:commandLink>
+                                </h:column>
+                            </h:dataTable>
+                        </h:panelGroup>
+    
+                    </h:panelGrid>
+                    <h:commandLink action="#{emprunteur.destroy}" value="Supprimer">
+                        <f:param name="jsfcrud.currentEmprunteur" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][emprunteur.emprunteur][emprunteur.converter].jsfcrud_invoke}" />
+                    </h:commandLink>
+                    <h:commandLink action="#{emprunteur.editSetup}" value="Modifier">
+                        <f:param name="jsfcrud.currentEmprunteur" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][emprunteur.emprunteur][emprunteur.converter].jsfcrud_invoke}" />
+                    </h:commandLink>
+                    <h:commandLink action="#{emprunteur.createSetup}" value="Ajouter un adherent" />
+                    <h:commandLink action="#{emprunteur.listSetup}"  value="Voir tout les Emprunteurs"/>
+                </h:form>
+            </div>
+        </body>
+    </html>
+</f:view>
+</html>
