@@ -160,10 +160,10 @@
                         </h:panelGroup>
     
                     </h:panelGrid>
-                    <h:commandLink action="#{livre.destroy}" value="Supprimer">
+                    <h:commandLink action="#{livre.destroy}" value="Supprimer" class="delete">
                         <f:param name="jsfcrud.currentLivre" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][livre.livre][livre.converter].jsfcrud_invoke}" />
                     </h:commandLink>
-                    <h:commandLink action="#{livre.editSetup}" value="Modifier">
+                    <h:commandLink action="#{livre.editSetup}" value="Modifier" class="edit">
                         <f:param name="jsfcrud.currentLivre" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][livre.livre][livre.converter].jsfcrud_invoke}" />
                     </h:commandLink>
                     <h:commandLink action="#{livre.createSetup}" value="Ajouter un Livre" />

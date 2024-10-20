@@ -139,13 +139,13 @@
                         </h:panelGroup>
     
                     </h:panelGrid>
-                    <h:commandLink action="#{exemplaire.destroy}" value="Supprimer">
+                    <h:commandLink action="#{exemplaire.destroy}" value="Supprimer" class="delete">
                         <f:param name="jsfcrud.currentExemplaire" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][exemplaire.exemplaire][exemplaire.converter].jsfcrud_invoke}" />
                     </h:commandLink>
-                    <h:commandLink action="#{exemplaire.editSetup}" value="Modifier">
+                    <h:commandLink action="#{exemplaire.editSetup}" value="Modifier" class="edit">
                         <f:param name="jsfcrud.currentExemplaire" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][exemplaire.exemplaire][exemplaire.converter].jsfcrud_invoke}" />
                     </h:commandLink>
-                    <h:commandLink action="#{exemplaire.createSetup}" value="Ajouter" />
+                    <h:commandLink action="#{exemplaire.createSetup}" value="Ajouter" class="add"/>
                     <h:commandLink action="#{exemplaire.listSetup}"  value="Voir tout les Exemplaires"/>
                 </h:form>
             </div>

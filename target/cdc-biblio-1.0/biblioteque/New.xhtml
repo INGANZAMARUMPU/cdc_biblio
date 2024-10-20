@@ -16,21 +16,22 @@
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
             <div class="parent">
-                <h1>Creation d'une biblioteque</h1>
+                <header>
+                    <h1>Creation d'une biblioteque</h1>
+                </header>
                 <h:form>
                     <h:inputHidden id="validateCreateField" validator="#{biblioteque.validateCreate}" value="value"/>
-                    <h:panelGrid columns="2">
+                    <h3>
                         <h:outputText value="Nom:"/>
-                        <h:inputText id="nom" value="#{biblioteque.biblioteque.nom}" title="Nom" />
+                    </h3>
+                    <h:inputText id="nom" value="#{biblioteque.biblioteque.nom}" title="Nom" />
+                    <h3>
                         <h:outputText value="Details:"/>
-                        <h:inputText id="details" value="#{biblioteque.biblioteque.details}" title="Details" />
-                        <h:outputText value="ExemplaireCollection:"/>
-                        <h:selectManyListbox id="exemplaireCollection" value="#{biblioteque.biblioteque.jsfcrud_transform[jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method.collectionToArray][jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method.arrayToList].exemplaireCollection}" title="ExemplaireCollection" size="6" converter="#{exemplaire.converter}" >
-                            <f:selectItems value="#{exemplaire.exemplaireItemsAvailableSelectMany}"/>
-                        </h:selectManyListbox>
-    
-                    </h:panelGrid>
-                    <h:commandLink action="#{biblioteque.create}" value="Ajouter"/>
+                    </h3>
+                    <h:inputTextarea id="details" value="#{biblioteque.biblioteque.details}" title="Details" />
+                    <div>
+                        <h:commandLink action="#{biblioteque.createSetup}" value="Creer" class="save"/>
+                    </div>
                     <h:commandLink action="#{biblioteque.listSetup}"  value="Voir tout les Biblioteques" immediate="true"/>
                 </h:form>
             </div>

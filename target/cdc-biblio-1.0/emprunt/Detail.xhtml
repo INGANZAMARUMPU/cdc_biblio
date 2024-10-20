@@ -85,10 +85,10 @@
                         </h:panelGroup>
     
                     </h:panelGrid>
-                    <h:commandLink action="#{emprunt.destroy}" value="Supprimer">
+                    <h:commandLink action="#{emprunt.destroy}" value="Supprimer" class="delete">
                         <f:param name="jsfcrud.currentEmprunt" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][emprunt.emprunt][emprunt.converter].jsfcrud_invoke}" />
                     </h:commandLink>
-                    <h:commandLink action="#{emprunt.editSetup}" value="Modifier">
+                    <h:commandLink action="#{emprunt.editSetup}" value="Modifier" class="edit">
                         <f:param name="jsfcrud.currentEmprunt" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][emprunt.emprunt][emprunt.converter].jsfcrud_invoke}" />
                     </h:commandLink>
                     <h:commandLink action="#{emprunt.createSetup}" value="Emprunter" />

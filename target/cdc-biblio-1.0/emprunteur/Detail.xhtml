@@ -158,10 +158,10 @@
                         </h:panelGroup>
     
                     </h:panelGrid>
-                    <h:commandLink action="#{emprunteur.destroy}" value="Supprimer">
+                    <h:commandLink action="#{emprunteur.destroy}" value="Supprimer" class="delete">
                         <f:param name="jsfcrud.currentEmprunteur" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][emprunteur.emprunteur][emprunteur.converter].jsfcrud_invoke}" />
                     </h:commandLink>
-                    <h:commandLink action="#{emprunteur.editSetup}" value="Modifier">
+                    <h:commandLink action="#{emprunteur.editSetup}" value="Modifier" class="edit">
                         <f:param name="jsfcrud.currentEmprunteur" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][emprunteur.emprunteur][emprunteur.converter].jsfcrud_invoke}" />
                     </h:commandLink>
                     <h:commandLink action="#{emprunteur.createSetup}" value="Ajouter un adherent" />

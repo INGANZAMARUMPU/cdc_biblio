@@ -77,10 +77,10 @@
     
     
                     </h:panelGrid>
-                    <h:commandLink action="#{reservation.destroy}" value="Supprimer">
+                    <h:commandLink action="#{reservation.destroy}" value="Supprimer" class="delete">
                         <f:param name="jsfcrud.currentReservation" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][reservation.reservation][reservation.converter].jsfcrud_invoke}" />
                     </h:commandLink>
-                    <h:commandLink action="#{reservation.editSetup}" value="Modifier">
+                    <h:commandLink action="#{reservation.editSetup}" value="Modifier" class="edit">
                         <f:param name="jsfcrud.currentReservation" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][reservation.reservation][reservation.converter].jsfcrud_invoke}" />
                     </h:commandLink>
                     <h:commandLink action="#{reservation.createSetup}" value="Reserver" />

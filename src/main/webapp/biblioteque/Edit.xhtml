@@ -16,27 +16,28 @@
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
             <div class="parent">
-                <h1>Modification du Biblioteque</h1>
+                <header>
+                    <h1>Modification de "<h:outputText value="#{biblioteque.biblioteque.nom}"/>"</h1>
+                    <h:form>
+                        <h:commandLink action="#{biblioteque.detailSetup}" value="Details" immediate="true">
+                            <f:param name="jsfcrud.currentBiblioteque" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][biblioteque.biblioteque][biblioteque.converter].jsfcrud_invoke}"/>
+                        </h:commandLink>
+                    </h:form>
+                </header>
                 <h:form>
-                    <h:panelGrid columns="2">
-                        <h:outputText value="Id:"/>
-                        <h:outputText value="#{biblioteque.biblioteque.id}" title="Id" />
+                    <h3>
                         <h:outputText value="Nom:"/>
-                        <h:inputText id="nom" value="#{biblioteque.biblioteque.nom}" title="Nom" />
+                    </h3>
+                    <h:inputText id="nom" value="#{biblioteque.biblioteque.nom}" title="Nom" />
+                    <h3>
                         <h:outputText value="Details:"/>
-                        <h:inputText id="details" value="#{biblioteque.biblioteque.details}" title="Details" />
-                        <h:outputText value="ExemplaireCollection:"/>
-                        <h:selectManyListbox id="exemplaireCollection" value="#{biblioteque.biblioteque.jsfcrud_transform[jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method.collectionToArray][jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method.arrayToList].exemplaireCollection}" title="ExemplaireCollection" size="6" converter="#{exemplaire.converter}" >
-                            <f:selectItems value="#{exemplaire.exemplaireItemsAvailableSelectMany}"/>
-                        </h:selectManyListbox>
-    
-                    </h:panelGrid>
-                    <h:commandLink action="#{biblioteque.edit}" value="Enregister">
-                        <f:param name="jsfcrud.currentBiblioteque" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][biblioteque.biblioteque][biblioteque.converter].jsfcrud_invoke}"/>
-                    </h:commandLink>
-                    <h:commandLink action="#{biblioteque.detailSetup}" value="Details" immediate="true">
-                        <f:param name="jsfcrud.currentBiblioteque" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][biblioteque.biblioteque][biblioteque.converter].jsfcrud_invoke}"/>
-                    </h:commandLink>
+                    </h3>
+                    <h:inputTextarea id="details" value="#{biblioteque.biblioteque.details}" title="Details" />
+                    <div>
+                        <h:commandLink action="#{biblioteque.edit}" value="Enregister" class="save">
+                            <f:param name="jsfcrud.currentBiblioteque" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][biblioteque.biblioteque][biblioteque.converter].jsfcrud_invoke}"/>
+                        </h:commandLink>
+                    </div>
                     <h:commandLink action="#{biblioteque.listSetup}"  value="Voir tout les Biblioteques" immediate="true"/>
                 </h:form>
             </div>

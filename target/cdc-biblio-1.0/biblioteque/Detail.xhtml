@@ -16,15 +16,33 @@
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
             <div class="parent">
-                <h1>Biblioteque Detail</h1>
-                <h:form>
-                    <h:panelGrid columns="2">
-                        <h:outputText value="Nom:"/>
+                <header>
+                    <h1>
+                        Biblioteque 
                         <h:outputText value="#{biblioteque.biblioteque.nom}" title="Nom" />
+                    </h1>
+                    <h:form>
+                        <h:commandLink action="#{biblioteque.destroy}" value="Supprimer" class="delete">
+                            <f:param name="jsfcrud.currentBiblioteque" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][biblioteque.biblioteque][biblioteque.converter].jsfcrud_invoke}" />
+                        </h:commandLink>
+                        <h:commandLink action="#{biblioteque.editSetup}" value="Modifier" class="edit">
+                            <f:param name="jsfcrud.currentBiblioteque" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][biblioteque.biblioteque][biblioteque.converter].jsfcrud_invoke}" />
+                        </h:commandLink>
+                        <h:commandLink action="#{biblioteque.createSetup}" value="Ajouter" class="add"/>
+                    </h:form>
+                </header>
+                <h:form>
+                    <h3>
+                        <h:outputText value="Nom:"/>
+                    </h3>
+                    <h:outputText value="#{biblioteque.biblioteque.nom}" title="Nom" />
+                    <h3>
                         <h:outputText value="Details:"/>
-                        <h:outputText value="#{biblioteque.biblioteque.details}" title="Details" />
-                    </h:panelGrid>
-                <h:outputText value="Les livres" />
+                    </h3>
+                    <h:outputText value="#{biblioteque.biblioteque.details}" title="Details" />
+                    <h3>
+                        <h:outputText value="Les livres" />
+                    </h3>
                     <h:panelGroup>
                         <h:outputText rendered="#{empty biblioteque.biblioteque.exemplaireCollection}" value="(No Items)"/>
                         <h:dataTable value="#{biblioteque.biblioteque.exemplaireCollection}" var="item" 
@@ -38,21 +56,15 @@
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
+                                    <h:outputText value="Livre"/>
+                                </f:facet>
+                                <h:outputText value="#{item.livreId.toString()}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
                                     <h:outputText value="Situation"/>
                                 </f:facet>
                                 <h:outputText value="#{item.situation}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="BibliotequeId"/>
-                                </f:facet>
-                                <h:outputText value="#{item.bibliotequeId.toString()}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="LivreId"/>
-                                </f:facet>
-                                <h:outputText value="#{item.livreId.toString()}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
@@ -81,13 +93,6 @@
                             </h:column>
                         </h:dataTable>
                     </h:panelGroup>
-                    <h:commandLink action="#{biblioteque.destroy}" value="Supprimer">
-                        <f:param name="jsfcrud.currentBiblioteque" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][biblioteque.biblioteque][biblioteque.converter].jsfcrud_invoke}" />
-                    </h:commandLink>
-                    <h:commandLink action="#{biblioteque.editSetup}" value="Modifier">
-                        <f:param name="jsfcrud.currentBiblioteque" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][biblioteque.biblioteque][biblioteque.converter].jsfcrud_invoke}" />
-                    </h:commandLink>
-                    <h:commandLink action="#{biblioteque.createSetup}" value="Ajouter" />
                     <h:commandLink action="#{biblioteque.listSetup}"  value="Voir tout les Biblioteques"/>
                 </h:form>
             </div>
