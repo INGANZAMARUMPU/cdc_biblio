@@ -97,7 +97,7 @@ header form{
     display: flex;
     gap: 10px;
 }
-input, textarea{
+input, textarea, select{
     padding: 8px 20px;
     font-size: 1em;
     width: 240px;
@@ -108,6 +108,9 @@ input, textarea{
 textarea{
     width: 360px;
     height: 64px;
+}
+select{
+    width: 285px;
 }
 .save{
     margin: 20px 0;

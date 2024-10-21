@@ -19,24 +19,27 @@
                 <h1>Ajout d'un exemplaire</h1>
                 <h:form>
                     <h:inputHidden id="validateCreateField" validator="#{exemplaire.validateCreate}" value="value"/>
-                    <h:panelGrid columns="2">
+                    <h3>
+                        <h:outputText value="Biblioteque:"/>
+                    </h3>
+                    <h:selectOneMenu id="bibliotequeId" value="#{exemplaire.exemplaire.bibliotequeId}" title="BibliotequeId" >
+                        <f:selectItems value="#{biblioteque.bibliotequeItemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h3>
+                        <h:outputText value="Livre:"/>
+                    </h3>
+                    <h:selectOneMenu id="livreId" value="#{exemplaire.exemplaire.livreId}" title="LivreId" >
+                        <f:selectItems value="#{livre.livreItemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h3>
                         <h:outputText value="Situation:"/>
-                        <h:inputText id="situation" value="#{exemplaire.exemplaire.situation}" title="Situation" />
-                        <h:outputText value="ReservationCollection:"/>
-                        <h:selectManyListbox id="reservationCollection" value="#{exemplaire.exemplaire.jsfcrud_transform[jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method.collectionToArray][jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method.arrayToList].reservationCollection}" title="ReservationCollection" size="6" converter="#{reservation.converter}" >
-                            <f:selectItems value="#{reservation.reservationItemsAvailableSelectMany}"/>
-                        </h:selectManyListbox>
-                        <h:outputText value="BibliotequeId:"/>
-                        <h:selectOneMenu id="bibliotequeId" value="#{exemplaire.exemplaire.bibliotequeId}" title="BibliotequeId" >
-                            <f:selectItems value="#{biblioteque.bibliotequeItemsAvailableSelectOne}"/>
-                        </h:selectOneMenu>
-                        <h:outputText value="LivreId:"/>
-                        <h:selectOneMenu id="livreId" value="#{exemplaire.exemplaire.livreId}" title="LivreId" >
-                            <f:selectItems value="#{livre.livreItemsAvailableSelectOne}"/>
-                        </h:selectOneMenu>
-    
-                    </h:panelGrid>
-                    <h:commandLink action="#{exemplaire.create}" value="Ajouter"/>
+                    </h3>
+                    <h:selectOneMenu id="situation" value="#{exemplaire.exemplaire.situation}" title="Situation" >
+                        <f:selectItems value="#{exemplaire.getAvailiableStates()}"/>
+                    </h:selectOneMenu>
+                    <div>
+                        <h:commandLink action="#{exemplaire.create}" value="Ajouter" class="save"/>
+                    </div>
                     <h:commandLink action="#{exemplaire.listSetup}"  value="Voir tout les Exemplaires" immediate="true"/>
                 </h:form>
             </div>

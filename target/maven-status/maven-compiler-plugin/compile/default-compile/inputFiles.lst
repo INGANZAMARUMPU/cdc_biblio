@@ -23,6 +23,7 @@
 /home/inganzamarumpu/NetBeansProjects/cdc-biblio/src/main/java/com/mediasoft/cdc/biblio/ReservationController.java
 /home/inganzamarumpu/NetBeansProjects/cdc-biblio/src/main/java/com/mediasoft/cdc/biblio/ReservationConverter.java
 /home/inganzamarumpu/NetBeansProjects/cdc-biblio/src/main/java/com/mediasoft/cdc/biblio/ReservationJpaController.java
+/home/inganzamarumpu/NetBeansProjects/cdc-biblio/src/main/java/com/mediasoft/cdc/biblio/SITUATIONS.java
 /home/inganzamarumpu/NetBeansProjects/cdc-biblio/src/main/java/com/mediasoft/cdc/biblio/exceptions/IllegalOrphanException.java
 /home/inganzamarumpu/NetBeansProjects/cdc-biblio/src/main/java/com/mediasoft/cdc/biblio/exceptions/NonexistentEntityException.java
 /home/inganzamarumpu/NetBeansProjects/cdc-biblio/src/main/java/com/mediasoft/cdc/biblio/exceptions/PreexistingEntityException.java

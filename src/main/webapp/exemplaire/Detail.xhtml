@@ -16,136 +16,91 @@
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
             <div class="parent">
-                <h1>Exemplaire Detail</h1>
+                <header>
+                    <div>
+                        <h1>
+                            <h:outputText value="#{exemplaire.exemplaire.livreId.toString()}"/>
+                        </h1>
+                        <h3>
+                            Chez <h:outputText value="#{exemplaire.exemplaire.bibliotequeId.toString()}"/>
+                        </h3>
+                    </div>
+                    <h:form>
+                        <h:commandLink action="#{exemplaire.destroy}" value="Supprimer" class="delete">
+                            <f:param name="jsfcrud.currentExemplaire" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][exemplaire.exemplaire][exemplaire.converter].jsfcrud_invoke}" />
+                        </h:commandLink>
+                        <h:commandLink action="#{exemplaire.editSetup}" value="Modifier" class="edit">
+                            <f:param name="jsfcrud.currentExemplaire" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][exemplaire.exemplaire][exemplaire.converter].jsfcrud_invoke}" />
+                        </h:commandLink>
+                        <h:commandLink action="#{exemplaire.createSetup}" value="Ajouter" class="add"/>
+                    </h:form>
+                </header>
                 <h:form>
-                    <h:panelGrid columns="2">
+                    <h3>
                         <h:outputText value="Situation:"/>
-                        <h:outputText value="#{exemplaire.exemplaire.situation}" title="Situation" />
-                        <h:outputText value="BibliotequeId:"/>
-                        <h:panelGroup>
-                            <h:outputText value="#{exemplaire.exemplaire.bibliotequeId}"/>
-                            <h:panelGroup rendered="#{exemplaire.exemplaire.bibliotequeId != null}">
-                                <h:outputText value=" ("/>
-                                <h:commandLink value="Details" action="#{biblioteque.detailSetup}">
-                                    <f:param name="jsfcrud.currentExemplaire" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][exemplaire.exemplaire][exemplaire.converter].jsfcrud_invoke}"/>
-                                    <f:param name="jsfcrud.currentBiblioteque" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][exemplaire.exemplaire.bibliotequeId][biblioteque.converter].jsfcrud_invoke}"/>
-                                    <f:param name="jsfcrud.relatedController" value="exemplaire"/>
-                                    <f:param name="jsfcrud.relatedControllerType" value="com.mediasoft.cdc.biblio.ExemplaireController"/>
-                                </h:commandLink>
-                                <h:outputText value=" "/>
-                                <h:commandLink value="Modifier" action="#{biblioteque.editSetup}">
-                                    <f:param name="jsfcrud.currentExemplaire" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][exemplaire.exemplaire][exemplaire.converter].jsfcrud_invoke}"/>
-                                    <f:param name="jsfcrud.currentBiblioteque" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][exemplaire.exemplaire.bibliotequeId][biblioteque.converter].jsfcrud_invoke}"/>
-                                    <f:param name="jsfcrud.relatedController" value="exemplaire"/>
-                                    <f:param name="jsfcrud.relatedControllerType" value="com.mediasoft.cdc.biblio.ExemplaireController"/>
-                                </h:commandLink>
-                                <h:outputText value=" "/>
-                                <h:commandLink value="Supprimer" action="#{biblioteque.destroy}">
-                                    <f:param name="jsfcrud.currentExemplaire" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][exemplaire.exemplaire][exemplaire.converter].jsfcrud_invoke}"/>
-                                    <f:param name="jsfcrud.currentBiblioteque" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][exemplaire.exemplaire.bibliotequeId][biblioteque.converter].jsfcrud_invoke}"/>
-                                    <f:param name="jsfcrud.relatedController" value="exemplaire"/>
-                                    <f:param name="jsfcrud.relatedControllerType" value="com.mediasoft.cdc.biblio.ExemplaireController"/>
-                                </h:commandLink>
-                                <h:outputText value=" )"/>
-                            </h:panelGroup>
+                    </h3>
+                    <h:outputText value="#{exemplaire.exemplaire.situation}" title="Situation" />
+                    <h3>
+                        <h:outputText value="Biblioteque:"/>
+                    </h3>
+                    <h:panelGroup>
+                        <h:outputText value="#{exemplaire.exemplaire.bibliotequeId.toString()}"/>
+                        <h:panelGroup rendered="#{exemplaire.exemplaire.bibliotequeId != null}">
+                            <h:outputText value=" ("/>
+                            <h:commandLink value="Details" action="#{biblioteque.detailSetup}">
+                                <f:param name="jsfcrud.currentExemplaire" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][exemplaire.exemplaire][exemplaire.converter].jsfcrud_invoke}"/>
+                                <f:param name="jsfcrud.currentBiblioteque" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][exemplaire.exemplaire.bibliotequeId][biblioteque.converter].jsfcrud_invoke}"/>
+                                <f:param name="jsfcrud.relatedController" value="exemplaire"/>
+                                <f:param name="jsfcrud.relatedControllerType" value="com.mediasoft.cdc.biblio.ExemplaireController"/>
+                            </h:commandLink>
+                            <h:outputText value=" "/>
+                            <h:commandLink value="Modifier" action="#{biblioteque.editSetup}">
+                                <f:param name="jsfcrud.currentExemplaire" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][exemplaire.exemplaire][exemplaire.converter].jsfcrud_invoke}"/>
+                                <f:param name="jsfcrud.currentBiblioteque" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][exemplaire.exemplaire.bibliotequeId][biblioteque.converter].jsfcrud_invoke}"/>
+                                <f:param name="jsfcrud.relatedController" value="exemplaire"/>
+                                <f:param name="jsfcrud.relatedControllerType" value="com.mediasoft.cdc.biblio.ExemplaireController"/>
+                            </h:commandLink>
+                            <h:outputText value=" "/>
+                            <h:commandLink value="Supprimer" action="#{biblioteque.destroy}">
+                                <f:param name="jsfcrud.currentExemplaire" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][exemplaire.exemplaire][exemplaire.converter].jsfcrud_invoke}"/>
+                                <f:param name="jsfcrud.currentBiblioteque" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][exemplaire.exemplaire.bibliotequeId][biblioteque.converter].jsfcrud_invoke}"/>
+                                <f:param name="jsfcrud.relatedController" value="exemplaire"/>
+                                <f:param name="jsfcrud.relatedControllerType" value="com.mediasoft.cdc.biblio.ExemplaireController"/>
+                            </h:commandLink>
+                            <h:outputText value=" )"/>
                         </h:panelGroup>
-                        <h:outputText value="LivreId:"/>
-                        <h:panelGroup>
-                            <h:outputText value="#{exemplaire.exemplaire.livreId}"/>
-                            <h:panelGroup rendered="#{exemplaire.exemplaire.livreId != null}">
-                                <h:outputText value=" ("/>
-                                <h:commandLink value="Details" action="#{livre.detailSetup}">
-                                    <f:param name="jsfcrud.currentExemplaire" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][exemplaire.exemplaire][exemplaire.converter].jsfcrud_invoke}"/>
-                                    <f:param name="jsfcrud.currentLivre" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][exemplaire.exemplaire.livreId][livre.converter].jsfcrud_invoke}"/>
-                                    <f:param name="jsfcrud.relatedController" value="exemplaire"/>
-                                    <f:param name="jsfcrud.relatedControllerType" value="com.mediasoft.cdc.biblio.ExemplaireController"/>
-                                </h:commandLink>
-                                <h:outputText value=" "/>
-                                <h:commandLink value="Modifier" action="#{livre.editSetup}">
-                                    <f:param name="jsfcrud.currentExemplaire" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][exemplaire.exemplaire][exemplaire.converter].jsfcrud_invoke}"/>
-                                    <f:param name="jsfcrud.currentLivre" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][exemplaire.exemplaire.livreId][livre.converter].jsfcrud_invoke}"/>
-                                    <f:param name="jsfcrud.relatedController" value="exemplaire"/>
-                                    <f:param name="jsfcrud.relatedControllerType" value="com.mediasoft.cdc.biblio.ExemplaireController"/>
-                                </h:commandLink>
-                                <h:outputText value=" "/>
-                                <h:commandLink value="Supprimer" action="#{livre.destroy}">
-                                    <f:param name="jsfcrud.currentExemplaire" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][exemplaire.exemplaire][exemplaire.converter].jsfcrud_invoke}"/>
-                                    <f:param name="jsfcrud.currentLivre" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][exemplaire.exemplaire.livreId][livre.converter].jsfcrud_invoke}"/>
-                                    <f:param name="jsfcrud.relatedController" value="exemplaire"/>
-                                    <f:param name="jsfcrud.relatedControllerType" value="com.mediasoft.cdc.biblio.ExemplaireController"/>
-                                </h:commandLink>
-                                <h:outputText value=" )"/>
-                            </h:panelGroup>
+                    </h:panelGroup>
+                    <h3>
+                        <h:outputText value="Livre:"/>
+                    </h3>
+                    <h:panelGroup>
+                        <h:outputText value="#{exemplaire.exemplaire.livreId.toString()}"/>
+                        <h:panelGroup rendered="#{exemplaire.exemplaire.livreId != null}">
+                            <h:outputText value=" ("/>
+                            <h:commandLink value="Details" action="#{livre.detailSetup}">
+                                <f:param name="jsfcrud.currentExemplaire" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][exemplaire.exemplaire][exemplaire.converter].jsfcrud_invoke}"/>
+                                <f:param name="jsfcrud.currentLivre" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][exemplaire.exemplaire.livreId][livre.converter].jsfcrud_invoke}"/>
+                                <f:param name="jsfcrud.relatedController" value="exemplaire"/>
+                                <f:param name="jsfcrud.relatedControllerType" value="com.mediasoft.cdc.biblio.ExemplaireController"/>
+                            </h:commandLink>
+                            <h:outputText value=" "/>
+                            <h:commandLink value="Modifier" action="#{livre.editSetup}">
+                                <f:param name="jsfcrud.currentExemplaire" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][exemplaire.exemplaire][exemplaire.converter].jsfcrud_invoke}"/>
+                                <f:param name="jsfcrud.currentLivre" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][exemplaire.exemplaire.livreId][livre.converter].jsfcrud_invoke}"/>
+                                <f:param name="jsfcrud.relatedController" value="exemplaire"/>
+                                <f:param name="jsfcrud.relatedControllerType" value="com.mediasoft.cdc.biblio.ExemplaireController"/>
+                            </h:commandLink>
+                            <h:outputText value=" "/>
+                            <h:commandLink value="Supprimer" action="#{livre.destroy}">
+                                <f:param name="jsfcrud.currentExemplaire" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][exemplaire.exemplaire][exemplaire.converter].jsfcrud_invoke}"/>
+                                <f:param name="jsfcrud.currentLivre" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][exemplaire.exemplaire.livreId][livre.converter].jsfcrud_invoke}"/>
+                                <f:param name="jsfcrud.relatedController" value="exemplaire"/>
+                                <f:param name="jsfcrud.relatedControllerType" value="com.mediasoft.cdc.biblio.ExemplaireController"/>
+                            </h:commandLink>
+                            <h:outputText value=" )"/>
                         </h:panelGroup>
-    
-                        <h:outputText value="ReservationCollection:" />
-                        <h:panelGroup>
-                            <h:outputText rendered="#{empty exemplaire.exemplaire.reservationCollection}" value="(No Items)"/>
-                            <h:dataTable value="#{exemplaire.exemplaire.reservationCollection}" var="item" 
-                                         border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px" 
-                                         rendered="#{not empty exemplaire.exemplaire.reservationCollection}">
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Id"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.id}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="Date"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.date}">
-                                        <f:convertDateTime pattern="MM/dd/yyyy" />
-                                    </h:outputText>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="EmprunteurId"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.emprunteurId}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText value="ExemplaireId"/>
-                                    </f:facet>
-                                    <h:outputText value="#{item.exemplaireId}"/>
-                                </h:column>
-                                <h:column>
-                                    <f:facet name="header">
-                                        <h:outputText escape="false" value=""/>
-                                    </f:facet>
-                                    <h:commandLink value="Details" action="#{reservation.detailSetup}">
-                                        <f:param name="jsfcrud.currentExemplaire" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][exemplaire.exemplaire][exemplaire.converter].jsfcrud_invoke}"/>
-                                        <f:param name="jsfcrud.currentReservation" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][item][reservation.converter].jsfcrud_invoke}"/>
-                                        <f:param name="jsfcrud.relatedController" value="exemplaire" />
-                                        <f:param name="jsfcrud.relatedControllerType" value="com.mediasoft.cdc.biblio.ExemplaireController" />
-                                    </h:commandLink>
-                                    <h:outputText value=" "/>
-                                    <h:commandLink value="Modifier" action="#{reservation.editSetup}">
-                                        <f:param name="jsfcrud.currentExemplaire" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][exemplaire.exemplaire][exemplaire.converter].jsfcrud_invoke}"/>
-                                        <f:param name="jsfcrud.currentReservation" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][item][reservation.converter].jsfcrud_invoke}"/>
-                                        <f:param name="jsfcrud.relatedController" value="exemplaire" />
-                                        <f:param name="jsfcrud.relatedControllerType" value="com.mediasoft.cdc.biblio.ExemplaireController" />
-                                    </h:commandLink>
-                                    <h:outputText value=" "/>
-                                    <h:commandLink value="Supprimer" action="#{reservation.destroy}">
-                                        <f:param name="jsfcrud.currentExemplaire" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][exemplaire.exemplaire][exemplaire.converter].jsfcrud_invoke}"/>
-                                        <f:param name="jsfcrud.currentReservation" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][item][reservation.converter].jsfcrud_invoke}"/>
-                                        <f:param name="jsfcrud.relatedController" value="exemplaire" />
-                                        <f:param name="jsfcrud.relatedControllerType" value="com.mediasoft.cdc.biblio.ExemplaireController" />
-                                    </h:commandLink>
-                                </h:column>
-                            </h:dataTable>
-                        </h:panelGroup>
-    
-                    </h:panelGrid>
-                    <h:commandLink action="#{exemplaire.destroy}" value="Supprimer" class="delete">
-                        <f:param name="jsfcrud.currentExemplaire" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][exemplaire.exemplaire][exemplaire.converter].jsfcrud_invoke}" />
-                    </h:commandLink>
-                    <h:commandLink action="#{exemplaire.editSetup}" value="Modifier" class="edit">
-                        <f:param name="jsfcrud.currentExemplaire" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][exemplaire.exemplaire][exemplaire.converter].jsfcrud_invoke}" />
-                    </h:commandLink>
-                    <h:commandLink action="#{exemplaire.createSetup}" value="Ajouter" class="add"/>
+                    </h:panelGroup>
+                    <br/><br/>
                     <h:commandLink action="#{exemplaire.listSetup}"  value="Voir tout les Exemplaires"/>
                 </h:form>
             </div>

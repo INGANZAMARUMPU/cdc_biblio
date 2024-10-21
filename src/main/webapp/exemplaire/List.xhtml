@@ -16,7 +16,12 @@
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
             <div class="parent">
-                <h1>Tout les Exemplaires</h1>
+                <header>
+                    <h1>Tout les Exemplaires</h1>
+                    <h:form>
+                        <h:commandLink action="#{exemplaire.createSetup}" value="Ajouter" class="add"/>
+                    </h:form>
+                </header>
                 <h:form styleClass="jsfcrud_list_form">
                     <h:outputText escape="false" value="(No Exemplaire Items Found)" rendered="#{exemplaire.pagingInfo.itemCount == 0}" />
                     <h:panelGroup rendered="#{exemplaire.pagingInfo.itemCount > 0}">
@@ -28,21 +33,21 @@
                         <h:dataTable value="#{exemplaire.exemplaireItems}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
                             <h:column>
                                 <f:facet name="header">
+                                    <h:outputText value="Livre"/>
+                                </f:facet>
+                                <h:outputText value="#{item.livreId.toString()}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Biblioteque"/>
+                                </f:facet>
+                                <h:outputText value="#{item.bibliotequeId.toString()}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
                                     <h:outputText value="Situation"/>
                                 </f:facet>
                                 <h:outputText value="#{item.situation}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="BibliotequeId"/>
-                                </f:facet>
-                                <h:outputText value="#{item.bibliotequeId}"/>
-                            </h:column>
-                            <h:column>
-                                <f:facet name="header">
-                                    <h:outputText value="LivreId"/>
-                                </f:facet>
-                                <h:outputText value="#{item.livreId}"/>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
@@ -63,7 +68,6 @@
     
                         </h:dataTable>
                     </h:panelGroup>
-                    <h:commandLink action="#{exemplaire.createSetup}" value="Ajouter" class="add"/>
                 </h:form>
             </div>
         </body>

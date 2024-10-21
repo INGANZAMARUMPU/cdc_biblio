@@ -11,6 +11,7 @@ com/mediasoft/cdc/biblio/JakartaRestConfiguration.class
 com/mediasoft/cdc/biblio/ReservationJpaController.class
 com/mediasoft/cdc/biblio/BibliotequeController.class
 com/mediasoft/cdc/biblio/LivreConverter.class
+com/mediasoft/cdc/biblio/SITUATIONS.class
 com/mediasoft/cdc/biblio/EmpruntJpaController.class
 com/mediasoft/cdc/biblio/BibliotequeConverter.class
 com/mediasoft/cdc/biblio/exceptions/PreexistingEntityException.class

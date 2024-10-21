@@ -20,6 +20,7 @@ import jakarta.inject.Named;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.PersistenceUnit;
 import jakarta.transaction.UserTransaction;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -178,6 +179,14 @@ public class ExemplaireController {
             exemplaireItems = getJpaController().findExemplaireEntities(pagingInfo.getBatchSize(), pagingInfo.getFirstItem());
         }
         return exemplaireItems;
+    }
+    
+    public SelectItem[] getAvailiableStates() {
+        ArrayList<String> choix = new ArrayList<>();
+        for(SITUATIONS item:SITUATIONS.values()){
+            choix.add(item.getDisplayName());
+        }
+        return JsfUtil.getSelectItems(choix, true);
     }
 
     public String next() {
