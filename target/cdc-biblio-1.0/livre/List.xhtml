@@ -16,7 +16,12 @@
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
             <div class="parent">
-                <h1>Tout les Livres</h1>
+                <header>
+                    <h1>Tout les Livres</h1>
+                    <h:form>
+                        <h:commandLink action="#{livre.createSetup}" value="Ajouter" class="add"/>
+                    </h:form>
+                </header>
                 <h:form styleClass="jsfcrud_list_form">
                     <h:outputText escape="false" value="(No Livre Items Found)" rendered="#{livre.pagingInfo.itemCount == 0}" />
                     <h:panelGroup rendered="#{livre.pagingInfo.itemCount > 0}">
@@ -81,7 +86,6 @@
     
                         </h:dataTable>
                     </h:panelGroup>
-                    <h:commandLink action="#{livre.createSetup}" value="Ajouter un Livre"/>
                 </h:form>
             </div>
         </body>

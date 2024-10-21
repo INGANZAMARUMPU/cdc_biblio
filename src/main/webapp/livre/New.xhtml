@@ -16,35 +16,40 @@
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
             <div class="parent">
-                <h1>New Livre</h1>
+                <h1>Ajout d'un livre</h1>
                 <h:form>
                     <h:inputHidden id="validateCreateField" validator="#{livre.validateCreate}" value="value"/>
-                    <h:panelGrid columns="2">
+                    <h3>
                         <h:outputText value="Isbn:"/>
-                        <h:inputText id="isbn" value="#{livre.livre.isbn}" title="Isbn" required="true" requiredMessage="The isbn field is required." />
+                    </h3>
+                    <h:inputText id="isbn" value="#{livre.livre.isbn}" title="Isbn" required="true" requiredMessage="The isbn field is required." />
+                    <h3>
                         <h:outputText value="Titre:"/>
-                        <h:inputText id="titre" value="#{livre.livre.titre}" title="Titre" />
+                    </h3>
+                    <h:inputText id="titre" value="#{livre.livre.titre}" title="Titre" />
+                    <h3>
                         <h:outputText value="Auteur:"/>
-                        <h:inputText id="auteur" value="#{livre.livre.auteur}" title="Auteur" />
+                    </h3>
+                    <h:inputText id="auteur" value="#{livre.livre.auteur}" title="Auteur" />
+                    <h3>
                         <h:outputText value="FonctionAuteur:"/>
-                        <h:inputText id="fonctionAuteur" value="#{livre.livre.fonctionAuteur}" title="FonctionAuteur" />
+                    </h3>
+                    <h:inputText id="fonctionAuteur" value="#{livre.livre.fonctionAuteur}" title="FonctionAuteur" />
+                    <h3>
                         <h:outputText value="Editeur:"/>
-                        <h:inputText id="editeur" value="#{livre.livre.editeur}" title="Editeur" />
+                    </h3>
+                    <h:inputText id="editeur" value="#{livre.livre.editeur}" title="Editeur" />
+                    <h3>
                         <h:outputText value="AnneEdition:"/>
-                        <h:inputText id="anneEdition" value="#{livre.livre.anneEdition}" title="AnneEdition" />
+                    </h3>
+                    <h:inputText id="anneEdition" value="#{livre.livre.anneEdition}" title="AnneEdition" />
+                    <h3>
                         <h:outputText value="Resume:"/>
-                        <h:inputText id="resume" value="#{livre.livre.resume}" title="Resume" />
-                        <h:outputText value="EmpruntCollection:"/>
-                        <h:selectManyListbox id="empruntCollection" value="#{livre.livre.jsfcrud_transform[jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method.collectionToArray][jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method.arrayToList].empruntCollection}" title="EmpruntCollection" size="6" converter="#{emprunt.converter}" >
-                            <f:selectItems value="#{emprunt.empruntItemsAvailableSelectMany}"/>
-                        </h:selectManyListbox>
-                        <h:outputText value="ExemplaireCollection:"/>
-                        <h:selectManyListbox id="exemplaireCollection" value="#{livre.livre.jsfcrud_transform[jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method.collectionToArray][jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method.arrayToList].exemplaireCollection}" title="ExemplaireCollection" size="6" converter="#{exemplaire.converter}" >
-                            <f:selectItems value="#{exemplaire.exemplaireItemsAvailableSelectMany}"/>
-                        </h:selectManyListbox>
-    
-                    </h:panelGrid>
-                    <h:commandLink action="#{livre.create}" value="Ajouter"/>
+                    </h3>
+                    <h:inputTextarea id="resume" value="#{livre.livre.resume}" title="Resume" />
+                    <div>
+                        <h:commandLink action="#{livre.create}" value="Ajouter" class="save"/>
+                    </div>
                     <h:commandLink action="#{livre.listSetup}"  value="Voir tout les Livres" immediate="true"/>
                 </h:form>
             </div>
