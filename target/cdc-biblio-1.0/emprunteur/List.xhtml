@@ -16,7 +16,12 @@
                 <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
             </h:panelGroup>
             <div class="parent">
-                <h1>Tout les Emprunteurs</h1>
+                <header>
+                    <h1>Tout les Emprunteurs</h1>
+                    <h:form>
+                        <h:commandLink action="#{emprunteur.createSetup}" value="Ajouter"/>
+                    </h:form>
+                </header>
                 <h:form styleClass="jsfcrud_list_form">
                     <h:outputText escape="false" value="(No Emprunteur Items Found)" rendered="#{emprunteur.pagingInfo.itemCount == 0}" />
                     <h:panelGroup rendered="#{emprunteur.pagingInfo.itemCount > 0}">
@@ -58,6 +63,12 @@
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
+                                    <h:outputText value="Bibliotheque"/>
+                                </f:facet>
+                                <h:outputText value="#{item.bibliotequeId.toString()}"/>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
                                     <h:outputText escape="false" value=""/>
                                 </f:facet>
                                 <h:commandLink value="Details" action="#{emprunteur.detailSetup}">
@@ -75,7 +86,6 @@
     
                         </h:dataTable>
                     </h:panelGroup>
-                    <h:commandLink action="#{emprunteur.createSetup}" value="Ajouter un adherent"/>
                 </h:form>
             </div>
         </body>

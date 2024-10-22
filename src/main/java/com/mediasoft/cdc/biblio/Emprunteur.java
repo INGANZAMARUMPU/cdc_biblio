@@ -11,6 +11,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.NamedQueries;
 import jakarta.persistence.NamedQuery;
 import jakarta.persistence.OneToMany;
@@ -64,6 +65,9 @@ public class Emprunteur implements Serializable {
     private Collection<Emprunt> empruntCollection;
     @OneToMany(mappedBy = "emprunteurId", fetch = FetchType.LAZY)
     private Collection<Reservation> reservationCollection;
+    
+    @JoinColumn(name = "biblioteque_id", referencedColumnName = "id", nullable = true)
+    private Biblioteque bibliotequeId;
 
     public Emprunteur() {
     }
@@ -118,6 +122,14 @@ public class Emprunteur implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Biblioteque getBibliotequeId() {
+        return bibliotequeId;
+    }
+
+    public void setBibliotequeId(Biblioteque bibliotequeId) {
+        this.bibliotequeId = bibliotequeId;
     }
 
     @XmlTransient

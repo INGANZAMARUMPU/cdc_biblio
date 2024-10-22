@@ -18,30 +18,37 @@
             <div class="parent">
                 <h1>Modification de l'emprunteur</h1>
                 <h:form>
-                    <h:panelGrid columns="2">
+                    <h3>
                         <h:outputText value="Nom:"/>
-                        <h:inputText id="nom" value="#{emprunteur.emprunteur.nom}" title="Nom" />
+                    </h3>
+                    <h:inputText id="nom" value="#{emprunteur.emprunteur.nom}" title="Nom" />
+                    <h3>
                         <h:outputText value="Prenom:"/>
-                        <h:inputText id="prenom" value="#{emprunteur.emprunteur.prenom}" title="Prenom" />
+                    </h3>
+                    <h:inputText id="prenom" value="#{emprunteur.emprunteur.prenom}" title="Prenom" />
+                    <h3>
                         <h:outputText value="Addresse:"/>
-                        <h:inputText id="addresse" value="#{emprunteur.emprunteur.addresse}" title="Addresse" />
+                    </h3>
+                    <h:inputText id="addresse" value="#{emprunteur.emprunteur.addresse}" title="Addresse" />
+                    <h3>
                         <h:outputText value="Telephone:"/>
-                        <h:inputText id="telephone" value="#{emprunteur.emprunteur.telephone}" title="Telephone" />
+                    </h3>
+                    <h:inputText id="telephone" value="#{emprunteur.emprunteur.telephone}" title="Telephone" />
+                    <h3>
                         <h:outputText value="Email:"/>
-                        <h:inputText id="email" value="#{emprunteur.emprunteur.email}" title="Email" />
-                        <h:outputText value="EmpruntCollection:"/>
-                        <h:selectManyListbox id="empruntCollection" value="#{emprunteur.emprunteur.jsfcrud_transform[jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method.collectionToArray][jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method.arrayToList].empruntCollection}" title="EmpruntCollection" size="6" converter="#{emprunt.converter}" >
-                            <f:selectItems value="#{emprunt.empruntItemsAvailableSelectMany}"/>
-                        </h:selectManyListbox>
-                        <h:outputText value="ReservationCollection:"/>
-                        <h:selectManyListbox id="reservationCollection" value="#{emprunteur.emprunteur.jsfcrud_transform[jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method.collectionToArray][jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method.arrayToList].reservationCollection}" title="ReservationCollection" size="6" converter="#{reservation.converter}" >
-                            <f:selectItems value="#{reservation.reservationItemsAvailableSelectMany}"/>
-                        </h:selectManyListbox>
-    
-                    </h:panelGrid>
-                    <h:commandLink action="#{emprunteur.edit}" value="Enregister">
-                        <f:param name="jsfcrud.currentEmprunteur" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][emprunteur.emprunteur][emprunteur.converter].jsfcrud_invoke}"/>
-                    </h:commandLink>
+                    </h3>
+                    <h:inputText id="email" value="#{emprunteur.emprunteur.email}" title="Email" />
+                    <h3>
+                        <h:outputText value="Biblioteque:"/>
+                    </h3>
+                    <h:selectOneMenu id="bibliotequeId" value="#{emprunteur.emprunteur.bibliotequeId}" title="BibliotequeId" >
+                        <f:selectItems value="#{biblioteque.bibliotequeItemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <div>
+                        <h:commandLink action="#{emprunteur.edit}" value="Enregister" class="save">
+                            <f:param name="jsfcrud.currentEmprunteur" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][emprunteur.emprunteur][emprunteur.converter].jsfcrud_invoke}"/>
+                        </h:commandLink>
+                    </div>
                     <h:commandLink action="#{emprunteur.detailSetup}" value="Details" immediate="true">
                         <f:param name="jsfcrud.currentEmprunteur" value="#{jsfcrud_class['com.mediasoft.cdc.biblio.util.JsfUtil'].jsfcrud_method['getAsConvertedString'][emprunteur.emprunteur][emprunteur.converter].jsfcrud_invoke}"/>
                     </h:commandLink>
