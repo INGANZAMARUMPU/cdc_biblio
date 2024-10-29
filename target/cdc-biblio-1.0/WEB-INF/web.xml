@@ -15,7 +15,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
-        <!--<url-pattern>*.xhtml</url-pattern>-->
-        <url-pattern>*.jsp</url-pattern>
+        <url-pattern>*.xhtml</url-pattern>
+        <!--<url-pattern>*.jsp</url-pattern>-->
     </servlet-mapping>
 </web-app>

@@ -51,28 +51,28 @@
         <from-view-id>*</from-view-id>
         <navigation-case>
             <from-outcome>biblioteque_create</from-outcome>
-            <to-view-id>/biblioteque/New.jsp</to-view-id>
+            <to-view-id>/biblioteque/New.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>*</from-view-id>
         <navigation-case>
             <from-outcome>biblioteque_list</from-outcome>
-            <to-view-id>/biblioteque/List.jsp</to-view-id>
+            <to-view-id>/biblioteque/List.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>*</from-view-id>
         <navigation-case>
             <from-outcome>biblioteque_edit</from-outcome>
-            <to-view-id>/biblioteque/Edit.jsp</to-view-id>
+            <to-view-id>/biblioteque/Edit.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>*</from-view-id>
         <navigation-case>
             <from-outcome>biblioteque_detail</from-outcome>
-            <to-view-id>/biblioteque/Detail.jsp</to-view-id>
+            <to-view-id>/biblioteque/Detail.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <managed-bean>
@@ -93,28 +93,28 @@
         <from-view-id>*</from-view-id>
         <navigation-case>
             <from-outcome>emprunt_create</from-outcome>
-            <to-view-id>/emprunt/New.jsp</to-view-id>
+            <to-view-id>/emprunt/New.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>*</from-view-id>
         <navigation-case>
             <from-outcome>emprunt_list</from-outcome>
-            <to-view-id>/emprunt/List.jsp</to-view-id>
+            <to-view-id>/emprunt/List.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>*</from-view-id>
         <navigation-case>
             <from-outcome>emprunt_edit</from-outcome>
-            <to-view-id>/emprunt/Edit.jsp</to-view-id>
+            <to-view-id>/emprunt/Edit.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>*</from-view-id>
         <navigation-case>
             <from-outcome>emprunt_detail</from-outcome>
-            <to-view-id>/emprunt/Detail.jsp</to-view-id>
+            <to-view-id>/emprunt/Detail.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <managed-bean>
@@ -135,28 +135,28 @@
         <from-view-id>*</from-view-id>
         <navigation-case>
             <from-outcome>emprunteur_create</from-outcome>
-            <to-view-id>/emprunteur/New.jsp</to-view-id>
+            <to-view-id>/emprunteur/New.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>*</from-view-id>
         <navigation-case>
             <from-outcome>emprunteur_list</from-outcome>
-            <to-view-id>/emprunteur/List.jsp</to-view-id>
+            <to-view-id>/emprunteur/List.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>*</from-view-id>
         <navigation-case>
             <from-outcome>emprunteur_edit</from-outcome>
-            <to-view-id>/emprunteur/Edit.jsp</to-view-id>
+            <to-view-id>/emprunteur/Edit.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>*</from-view-id>
         <navigation-case>
             <from-outcome>emprunteur_detail</from-outcome>
-            <to-view-id>/emprunteur/Detail.jsp</to-view-id>
+            <to-view-id>/emprunteur/Detail.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <managed-bean>
@@ -177,28 +177,28 @@
         <from-view-id>*</from-view-id>
         <navigation-case>
             <from-outcome>exemplaire_create</from-outcome>
-            <to-view-id>/exemplaire/New.jsp</to-view-id>
+            <to-view-id>/exemplaire/New.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>*</from-view-id>
         <navigation-case>
             <from-outcome>exemplaire_list</from-outcome>
-            <to-view-id>/exemplaire/List.jsp</to-view-id>
+            <to-view-id>/exemplaire/List.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>*</from-view-id>
         <navigation-case>
             <from-outcome>exemplaire_edit</from-outcome>
-            <to-view-id>/exemplaire/Edit.jsp</to-view-id>
+            <to-view-id>/exemplaire/Edit.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>*</from-view-id>
         <navigation-case>
             <from-outcome>exemplaire_detail</from-outcome>
-            <to-view-id>/exemplaire/Detail.jsp</to-view-id>
+            <to-view-id>/exemplaire/Detail.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <managed-bean>
@@ -219,28 +219,28 @@
         <from-view-id>*</from-view-id>
         <navigation-case>
             <from-outcome>livre_create</from-outcome>
-            <to-view-id>/livre/New.jsp</to-view-id>
+            <to-view-id>/livre/New.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>*</from-view-id>
         <navigation-case>
             <from-outcome>livre_list</from-outcome>
-            <to-view-id>/livre/List.jsp</to-view-id>
+            <to-view-id>/livre/List.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>*</from-view-id>
         <navigation-case>
             <from-outcome>livre_edit</from-outcome>
-            <to-view-id>/livre/Edit.jsp</to-view-id>
+            <to-view-id>/livre/Edit.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>*</from-view-id>
         <navigation-case>
             <from-outcome>livre_detail</from-outcome>
-            <to-view-id>/livre/Detail.jsp</to-view-id>
+            <to-view-id>/livre/Detail.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <managed-bean>
@@ -261,28 +261,28 @@
         <from-view-id>*</from-view-id>
         <navigation-case>
             <from-outcome>reservation_create</from-outcome>
-            <to-view-id>/reservation/New.jsp</to-view-id>
+            <to-view-id>/reservation/New.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>*</from-view-id>
         <navigation-case>
             <from-outcome>reservation_list</from-outcome>
-            <to-view-id>/reservation/List.jsp</to-view-id>
+            <to-view-id>/reservation/List.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>*</from-view-id>
         <navigation-case>
             <from-outcome>reservation_edit</from-outcome>
-            <to-view-id>/reservation/Edit.jsp</to-view-id>
+            <to-view-id>/reservation/Edit.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
         <from-view-id>*</from-view-id>
         <navigation-case>
             <from-outcome>reservation_detail</from-outcome>
-            <to-view-id>/reservation/Detail.jsp</to-view-id>
+            <to-view-id>/reservation/Detail.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
 </faces-config>
